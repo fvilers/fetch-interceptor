@@ -25,6 +25,7 @@ const logElapsedTime: Interceptor = (fetch) => async (input, init) => {
   return result;
 };
 
+// Apply the interceptors on the original fetch implementation
 window.fetch = applyInterceptor(
   addCustomHeader("X-Test", "42"),
   logElapsedTime
