@@ -4,9 +4,20 @@
   "description": "An helper function to create and register interceptors on fetch",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "prebuild": "rimraf ./dist",
+    "start": "node ./dist"
   },
-  "keywords": ["fetch", "interceptor", "fetch-api"],
+  "keywords": [
+    "fetch",
+    "interceptor",
+    "fetch-api"
+  ],
   "author": "Fabian Vilers <fabian.vilers@dev-one.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@tsconfig/node18": "^18.2.1",
+    "rimraf": "^5.0.1",
+    "typescript": "^5.1.6"
+  }
 }
