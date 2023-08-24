@@ -12,7 +12,7 @@ const addCustomHeader =
   (key: string, value: string): Interceptor =>
   (fetch) =>
   (input, init) =>
-    fetch(input, { ...init, headers: { [key]: value } });
+    fetch(input, { ...init, headers: { ...init?.headers, [key]: value } });
 
 // Log elapsed time during request fetching
 const logElapsedTime: Interceptor = (fetch) => async (input, init) => {
