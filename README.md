@@ -49,3 +49,24 @@ window.fetch = applyInterceptor(
   setHeader("X-Test", "42", SetBehavior.Overwrite)
 )(window.fetch);
 ```
+
+### observePerformance
+
+This interceptor accepts a callback as a parameter. The callback function accepts a `start` and `end` parameters which correspond to the `performance.now()` value at the start and the end of the fetch execution.
+
+```ts
+import { applyInterceptor } from "@fvilers/fetch-interceptor";
+import {
+  observePerformance,
+  PerformanceCallback,
+} from "@fvilers/fetch-interceptor/premade/observePerformance";
+
+const onPerformanceObserved: PerformanceCallback = (start, end) => {
+  const elapsedTime = end - start;
+  console.log("Elapsed time", elapsedTime, "ms");
+};
+
+window.fetch = applyInterceptor(observePerformance(onPerformanceObserved))(
+  window.fetch
+);
+```
