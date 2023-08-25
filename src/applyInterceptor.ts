@@ -1,8 +1,8 @@
-type Fetch = (
+export type Fetch = (
   input: RequestInfo | URL,
   init?: RequestInit
 ) => Promise<Response>;
-type Interceptor = (fetch: Fetch) => Fetch;
+export type Interceptor = (fetch: Fetch) => Fetch;
 
 export function applyInterceptor(...interceptors: Interceptor[]): Interceptor {
   interceptors = [...interceptors].reverse();
