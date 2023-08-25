@@ -31,3 +31,21 @@ window.fetch = applyInterceptor(
   logElapsedTime
 )(window.fetch);
 ```
+
+## Premade interceptors
+
+### setHeader
+
+This interceptor accepts as parameters a `key` (string) and `value` (string) that you want to add to the headers collection. By default, it won't overwrite an existing value but you can force it using the third parameter: `overwrite` (boolean).
+
+```ts
+import { applyInterceptor } from "@fvilers/fetch-interceptor";
+import {
+  setHeader,
+  SetBehavior,
+} from "@fvilers/fetch-interceptor/premade/setHeader";
+
+window.fetch = applyInterceptor(
+  setHeader("X-Test", "42", SetBehavior.Overwrite)
+)(window.fetch);
+```
